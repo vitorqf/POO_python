@@ -115,6 +115,8 @@ class Elevador:
 
 e1 = Elevador(5, 3)
 
+# ==> TESTES / INTERACAO COM O USUARIO <==
+
 print("\nQual acao deseja realizar?\
         \n1 - Entrar\
         \n2 - Sair\
@@ -186,3 +188,5 @@ while True:
         case _:
             print("\nOpcao inexistente. Finalizando.")
             break
+
+# <== FIM ==>

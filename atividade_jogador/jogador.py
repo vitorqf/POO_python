@@ -3,45 +3,41 @@ import datetime
 
 class Jogador:
     def __init__(self, nome, posicao, nascimento, nacionalidade, altura, peso):
-        self.__nome = nome
-        self.__posicao = posicao
+        self.__nome = nome.upper()
+        self.__posicao = posicao.upper()
         self.__nascimento = nascimento  # dd/mm/yyyy
-        self.__nacionalidade = nacionalidade
+        self.__nacionalidade = nacionalidade.upper()
         self.__altura = altura  # cm
         self.__peso = peso  # kg
-        self.__idade = (datetime.date.today().year) - \
-            (int(self.__nascimento.split('/')[2]))
+        self.__idade = (datetime.date.today().year) -  (int(self.__nascimento.split('/')[2]))
 
     def checarIdade(self):
         if ((self.__posicao == 'Atacante') or
-            (self.__posicao.lower() == 'atacante') or
-                ((self.__posicao.upper() == 'ATACANTE'))):
+            (self.__posicao.lower() == 'atacante')):
 
             if (self.__idade == 35):
                 print("O jogador ja esta na media de aposentadoria para a sua posicao.")
+
             else:
-                print("Faltando para chegar na media de aposentadoria: {} anos".format(
-                    35 - self.__idade))
+                print("Faltando para chegar na media de aposentadoria: {} anos".format(35 - self.__idade))
 
         elif ((self.__posicao == 'Meio-campo') or
-              (self.__posicao.lower() == 'meio-campo') or
-              ((self.__posicao.upper() == 'MEIO-CAMPO'))):
+              (self.__posicao.lower() == 'meio-campo')):
 
             if (self.__idade == 38):
                 print("O jogador ja esta na media de aposentadoria para a sua posicao.")
+
             else:
-                print("Faltando para chegar na media de aposentadoria: {} anos".format(
-                    38 - self.__idade))
+                print("Faltando para chegar na media de aposentadoria: {} anos".format(38 - self.__idade))
 
         elif ((self.__posicao == 'Defesa') or
-              (self.__posicao.lower() == 'defesa') or
-              ((self.__posicao.upper() == 'DEFESA'))):
+              (self.__posicao.lower() == 'defesa')):
 
             if (self.__idade == 40):
-                print("O jogador ja esta na media de aposentadoria para a sua posicao.")
+                print("\nO jogador ja esta na media de aposentadoria para a sua posicao.")
+
             else:
-                print("Faltando para chegar na media de aposentadoria: {} anos".format(
-                    40 - self.__idade))
+                print("\nFaltando para chegar na media de aposentadoria: {} anos".format(40 - self.__idade))
 
         else:
             print("Posicao '{}' nao reconhecida.".format(self.__posicao))
@@ -50,19 +46,19 @@ class Jogador:
     def imprime(self):
         print(
             "\n=-=-= Dados do Jogador =-=-=\n \
-            \nNOME: {} \
-            \nPOSICAO: {} \
-            \nNASCIMENTO: {} \
-            \nNACIONALIDADE: {} \
-            \nALTURA: {} cm \
-            \nPESO: {} kg \
-            \nIDADE: {} anos\n \
+            \nNome: {} \
+            \nPosicao: {} \
+            \nNascimento: {} \
+            \nNacionalidade: {} \
+            \nAltura: {} cm \
+            \nPeso: {} kg \
+            \nIdade: {} anos\n \
             \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n"
             .format(
-                self.__nome,
-                self.__posicao,
+                self.__nome.upper(),
+                self.__posicao.upper(),
                 self.__nascimento,
-                self.__nacionalidade,
+                self.__nacionalidade.upper(),
                 self.__altura,
                 self.__peso,
                 self.__idade
@@ -106,6 +102,76 @@ class Jogador:
         self.__altura = altura
 
 
-j1 = Jogador("Augusto", "ATacante", "10/02/1995", "Brasileiro", 189, 82)
-j1.imprime()
-j1.checarIdade()
+j1 = Jogador("Augusto", "ATacAnTe", "10/02/1995", "Brasileiro", 189, 82)
+
+print("O que deseja realizar?\
+        \n1 - Ver dados do jogador\
+        \n2 - Verificar aposentadoria\
+        \n3 - Alterar dados\
+        \n4 - Sair")
+
+while True:
+    
+    choice = int(input("\n=> "))
+
+    match choice:
+
+        case 1:
+            j1.imprime()
+        
+        case 2:
+            j1.checarIdade()
+
+        case 3:
+
+            print("\nQual dado deseja alterar?\
+                \n1 - Nome\
+                \n2 - Posicao\
+                \n3 - Nascimento\
+                \n4 - Nacionalidade\
+                \n5 - Altura\
+                \n6 - Peso\
+                \n0 - Cancelar")
+
+            action = int(input("\n> Acao: "))
+
+            match action:
+                case 1:
+                    dado = input("\nNova informacao: ")
+                    j1.setNome(dado)
+
+                case 2:
+                    dado = input("\nNova informacao: ")
+                    j1.setPosicao(dado)
+
+                case 3:
+                    dado = input("\nNova informacao: ")
+                    j1.setNascimento(dado)
+
+                case 4:
+                    dado = input("\nNova informacao: ")
+                    j1.setNacionalidade(dado)
+
+                case 5:
+                    dado = int(input("\nNova informacao: "))
+                    j1.setAltura(dado)
+
+                case 6:
+                    dado = float(input("\nNova informacao: "))
+                    j1.setPeso(dado)
+
+                case 0:
+                    print("\nSaindo...")
+
+                case _:
+                    print("\nOpcao invalida. Saindo...")
+
+            print("\n>>> Dados alterados <<<")
+        
+        case 4:
+            print("\nSaindo...")
+            break
+
+        case _:
+            print("\nOpcao invalida. Saindo...")
+            break
