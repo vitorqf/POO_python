@@ -10,6 +10,10 @@ class CartaoMensagem:
         self.remetente = remetente
         self.listaMsg.append(self)
 
+    def printMsgs(self):
+        for msg in self.listaMsg:
+            print(f"{msg}\n{'':-^80}\n")
+
     def set_nome(self, info):
         self.nome = info
 
