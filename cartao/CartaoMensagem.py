@@ -4,8 +4,7 @@ from datetime import date
 class CartaoMensagem: 
     listaMsg = []
 
-    def __init__(self, nome, remetente, data = date.today().strftime("%d/%m/%Y")):
-        self.nome = nome
+    def __init__(self, remetente, data = date.today().strftime("%d/%m/%Y")):
         self.data = data
         self.remetente = remetente
         self.listaMsg.append(self)
@@ -14,11 +13,11 @@ class CartaoMensagem:
         for msg in self.listaMsg:
             print(f"{msg}\n{'':-^80}\n")
 
-    def set_nome(self, info):
-        self.nome = info
-
-    def set_nome(self, info):
+    def set_data(self, info):
         self.data = info
+
+    def get_data(self):
+        return self.data
         
     def set_remetente(self, info):
         self.remetente = info
@@ -26,8 +25,4 @@ class CartaoMensagem:
     def get_remetente(self):
         return self.remetente
 
-    def get_data(self):
-        return self.data
-
-    def get_nome(self):
-        return self.nome
+    
