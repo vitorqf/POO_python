@@ -4,8 +4,12 @@ import funcionario as f
 # gerente = Gerente('José', '222222222-22', 5000.0, '1234', 0)
 # print(gerente.get_bonificacao())
 
-funcionario = f.Funcionario('João', '111111111-11', 2000.0)
-print("bonificacao funcionario: {}".format(funcionario.get_bonificacao()))
+try:
+    funcionario = f.Funcionario('João', '111111111-11', 2000.0)
+    print("bonificacao funcionario: {}".format(funcionario.get_bonificacao()))
+
+except TypeError as e:
+    print(e)
 
 gerente = Gerente("José", "222222222-22", 5000.0, '1234', 0)
 print("bonificacao gerente: {}".format(gerente.get_bonificacao()))
