@@ -1,8 +1,11 @@
 class AtualizadorDeContas:
+
+    """Construtor da classe AtualizadorDeContas"""
     def __init__(self, selic, saldo_total=0):
         self.__selic = selic
         self.__saldo_total = saldo_total
 
+    """Executa o comando de atualizar o saldo da conta passada como argumento"""
     def exec(self, conta):
         try:
             print(f"\nSaldo da Conta: {conta.saldo}")

@@ -4,6 +4,7 @@ from conta import Conta
 # Questao 02
 from contacorrente import ContaCorrente
 from contapoupanca import ContaPoupanca
+from containvestimento import ContaInvestimento
 
 from atualizadordecontas import AtualizadorDeContas
 from banco import Banco
@@ -11,21 +12,29 @@ from banco import Banco
 if __name__ == '__main__':
     # Questao 03
     # Numero / Titular / Saldo
-    c = Conta('123-4', 'Joao', 1000.0)
-    cc = ContaCorrente('123-5', 'Jose', 1000.0)
-    cp = ContaPoupanca('123-6', 'Maria', 1000.0)
+    try:
+        c = Conta('123-4', 'Joao', 1000.0)
+
+    except TypeError as e:
+        print(e)
+
+    cc = ContaCorrente('123-5', 'Jose', 'Corrente', 1000.0)
+    cp = ContaPoupanca('123-6', 'Maria', 'Poupanca', 1000.0)
+    ci = ContaInvestimento('123-6', 'Maria', 'Investimento', 1000.0)
+
     bb = Banco('0001', 'Banco do Brasil')
 
-    c.atualiza(0.01)
+    ci.deposita(1000.0)
+
+    ci.atualiza(0.01)
     cc.atualiza(0.01)
     cp.atualiza(0.01)
 
-    print(c.saldo)
     print(cc.saldo)
     print(cp.saldo)
+    print(ci.saldo)
 
     # Questao 04
-    print(c)
     print(cc)
     print(cp)
 
@@ -33,7 +42,6 @@ if __name__ == '__main__':
 
     # Questao 05
     adc = AtualizadorDeContas(0.01)
-    adc.exec(c)
     adc.exec(cc)
     adc.exec(cp)
 
@@ -66,7 +74,7 @@ if __name__ == '__main__':
 
     # (opcional) Questao 05, pode ser feito um bloco try/except
 
-    
+
 
 
 

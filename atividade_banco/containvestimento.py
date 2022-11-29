@@ -1,6 +1,6 @@
 from conta import Conta
 
-class ContaCorrente(Conta):
+class ContaInvestimento(Conta):
     """Construtor da classe conta corrente, recebe todos os valores da classe pai e é adicionado o valor tipo"""
     def __init__(self, numero, titular, tipo, saldo=0, limite=1000):
         super().__init__(numero, titular, saldo, limite)
@@ -18,7 +18,8 @@ class ContaCorrente(Conta):
     @tipo.setter
     def tipo(self, other):
         self.__tipo = other
-
+        
     """Recebe o valor retornado pelo método atualiza da classe pai e multiplica por 5"""
     def atualiza(self, taxa):
-        return super().atualiza(taxa * 2)
+        return super().atualiza(taxa * 5)
+
